@@ -1,0 +1,10 @@
+export ROLL=27100293                 
+export RG=rg-sp26-$ROLL
+export REGION=ukwest                 
+export ACR=pa4$ROLL                  
+export PLAN=pa4-$ROLL
+export WEBAPP=pa4-$ROLL
+export FUNCAPP=pa4-$ROLL
+export AKS=pa4-$ROLL
+export STORAGE=pa4$ROLL              
+export MI=mi-pa4-$ROLL
