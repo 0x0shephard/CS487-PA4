@@ -1,9 +1,20 @@
-node_modules/
-__pycache__/
-*.py[cod]
-.python-version
-.venv/
-venv/
-.env
-local.settings.generated.json
-npm-debug.log*
+# Azurite local state
+function-app/__azurite_db_*.json
+function-app/__blobstorage__/
+function-app/__queuestorage__/
+function-app/AzuriteConfig
+function-app/.azurite/
+
+# Python
+function-app/.venv/
+function-app/__pycache__/
+function-app/**/__pycache__/
+*.pyc
+
+# Node
+webapp/node_modules/
+
+# OS / editor cruft
+.DS_Store
+.vscode/
+.idea/
