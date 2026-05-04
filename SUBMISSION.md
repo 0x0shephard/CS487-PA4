@@ -212,13 +212,17 @@ This screenshot shows the downloaded report PDF opened locally, proving the ACI-
 
 These screenshots show Function App invocation evidence for the starter, orchestrator, and activities.
 
-![AKS validator traffic 1](docs/42-aks-pod-logs-or-aks-metrics-showing-the-validator-rece.png)
+![Durable starter response for backend run](docs/42-aks-pod-logs-or-aks-metrics-showing-the-validator-rece.png)
 
-![AKS validator traffic 2](docs/43-aks-pod-logs-or-aks-metrics-showing-the-validator-rece.png)
+This screenshot shows the Durable Function starter response for the backend run.
 
-![AKS validator traffic 3](docs/44-aks-pod-logs-or-aks-metrics-showing-the-validator-rece.png)
+![ACI report container Activity Log evidence](docs/43-aks-pod-logs-or-aks-metrics-showing-the-validator-rece.png)
 
-These screenshots show AKS pod logs and metrics proving the validator received traffic during the run.
+This screenshot shows the report PDF in Blob Storage and the Azure Activity Log entries for the short-lived ACI report container group.
+
+![AKS validator traffic](docs/44-aks-pod-logs-or-aks-metrics-showing-the-validator-rece.png)
+
+This screenshot shows AKS pod logs proving the validator received `POST /validate` traffic during the run.
 
 ![Resource group overview](docs/45-resource-group-picture.png)
 
@@ -300,9 +304,9 @@ Implementing the same flow as two plain HTTP-triggered functions would make stat
 
 ### 4. Cost Review
 
-Cost Management should be captured from Azure Portal using **Cost Management -> Cost Analysis** scoped to `rg-sp26-27100293`. For this PA, the total cost should be low because the workload is small and short-lived. The single most expensive resource is expected to be AKS, because its node pool continues running even when no validation requests are being processed. App Service also has a baseline cost from the App Service Plan, while ACI, Storage, ACR, and Functions are comparatively small for this assignment-sized workload.
+![Cost Analysis scoped to resource group](docs/Cost-Analysis.png)
 
-The Cost Analysis screenshot was not present in `Screenshots.docx`; add it under this section if your instructor requires the visual evidence in addition to the written cost estimate.
+Cost Management was captured from Azure Portal using **Cost Management -> Cost Analysis** scoped to `rg-sp26-27100293`. The screenshot shows an actual accumulated cost of about `$1.57` for the resource group at capture time. The largest individual resource entry shown is `pa4-27100293` at about `$1.01`, while the largest service category shown is Microsoft Defender at about `$0.88`; Azure App Service is also visible at about `$0.47`. ACI, Storage, bandwidth, and Event Grid were comparatively small for this assignment-sized workload.
 
 ### 5. Challenges Faced
 

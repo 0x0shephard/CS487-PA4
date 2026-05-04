@@ -49,3 +49,4 @@
 47. `47-rejection-flow.png` - Rejection Flow (word/media/image11.png)
 48. `48-i-am-unable-to-get-the-function-app-monitor-showing-th.png` - I am unable to get the Function App Monitor showing the orchestration completed Successfully but with status: rejected as the output on the azure portal. I have created in another instance which shows orchestration succeeded but curl shows the error. (word/media/image2.png)
 49. `49-i-am-unable-to-get-the-function-app-monitor-showing-th.png` - I am unable to get the Function App Monitor showing the orchestration completed Successfully but with status: rejected as the output on the azure portal. I have created in another instance which shows orchestration succeeded but curl shows the error. (word/media/image1.png)
+50. `Cost-Analysis.png` - Cost Management Cost Analysis scoped to resource group `rg-sp26-27100293`.
