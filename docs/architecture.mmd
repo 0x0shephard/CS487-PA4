@@ -1,0 +1,29 @@
+flowchart TD
+    user[User Browser]
+    github[GitHub Fork + Actions]
+    web[Azure App Service Web App<br/>pa4-27100293]
+    func[Azure Durable Functions<br/>pa4-func-27100293]
+    orch[my_orchestrator]
+    validate[AKS validate-api<br/>validate-service :8080]
+    aci[Azure Container Instance<br/>ci-report-&lt;order_id&gt;]
+    blob[Blob Storage<br/>reports container]
+    acr[Azure Container Registry<br/>validate-api, report-job, func-app]
+    mi[Managed Identity<br/>mi-pa4-27100293]
+
+    github -->|deploys web app| web
+    github -->|container images| acr
+    acr -->|validate-api:v1| validate
+    acr -->|func-app:v1| func
+    acr -->|report-job:v1| aci
+
+    user -->|submit order| web
+    web -->|HTTP starter| func
+    func --> orch
+    orch -->|validate_activity| validate
+    orch -->|report_activity creates job| aci
+    aci -->|uploads PDF| blob
+    web -->|poll status URL| func
+    func -->|returns report URL or rejected status| web
+
+    mi -->|RBAC for storage, ACI creation, blob upload| func
+    mi -->|attached to report ACI| aci

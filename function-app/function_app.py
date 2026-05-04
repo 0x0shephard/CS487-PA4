@@ -41,6 +41,7 @@ def report_activity(order: dict) -> str:
     rg       = os.environ["REPORT_RG"]
     loc      = os.environ["REPORT_LOCATION"]
     image    = os.environ["REPORT_IMAGE"]
+    identity_client_id = os.environ["REPORT_IDENTITY_CLIENT_ID"]
     order_id = order["order_id"]
     name     = f"ci-report-{order_id.lower()}"
 
@@ -69,7 +70,7 @@ def report_activity(order: dict) -> str:
                 EnvironmentVariable(name="ORDER_ID", value=order_id),
                 EnvironmentVariable(name="ORDER_JSON", value=json.dumps(order)),
                 EnvironmentVariable(name="STORAGE_ACCOUNT_URL", value=os.environ["STORAGE_ACCOUNT_URL"]),
-                EnvironmentVariable(name="AZURE_CLIENT_ID", value=os.environ["AZURE_CLIENT_ID"]),
+                EnvironmentVariable(name="AZURE_CLIENT_ID", value=identity_client_id),
             ])])
 
     client.container_groups.begin_create_or_update(rg, name, group).result()
